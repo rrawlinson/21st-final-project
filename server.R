@@ -13,3 +13,6 @@
 my.server <- function(input, output) {}
 
 shinyServer(my.server)
+
+ggplot(mydata12) +
+  geom_bar(mapping = aes(x = region, y = White_population, fill = region), stat = "identity")
