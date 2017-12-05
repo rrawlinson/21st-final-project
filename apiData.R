@@ -56,9 +56,13 @@ get.data.for.year <- function(year) { # year between 2012 and 2015
   
   # print(full.url)
   df <- as.data.frame(fromJSON(full.url))
-  # print(is.data.frame(df))
-  names(df) <- as.matrix(df[1, ])
-  df <- df[-1, ]
-  # df[] <- lapply(df, function(x) type.convert(as.character(x))) # turns number values into characters
+  #is.data.frame(df)
+  names(df) <- as.matrix(df[1,])
+  df <- df[-1,]
+  names(df) <- c("Total population","Total percent", "White population", "white percent", "Black or African American population",
+                    "Black or African American percent", "American Indian and Alaska Native population", "American Indian and Alaska Native percent",
+                  "Asian population", "Asian percent", "Native Hawaiian and Other Pacific Islander population", 
+                  "Native Hawaiian and Other Pacific Islander percent", "Some other race population", "Some other race percent")
+  #df[] <- lapply(df, function(x) type.convert(as.character(x))) # turns number values into characters
   return(df)
 }
