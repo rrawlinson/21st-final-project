@@ -62,7 +62,7 @@ get.data.for.year <- function(year) { # year between 2012 and 2015
   names(df) <- c("Total_population","Total_percent", "White_population", "White_percent", "Black_or_African_American_population",
                     "Black_or_African_American_percent", "American_Indian_and_Alaska_Native_population", "American_Indian_and_Alaska_Native_percent",
                   "Asian_population", "Asian_percent", "Native_Hawaiian_and_Other_Pacific_Islander_population", 
-                  "Native_Hawaiian_and_Other_Pacific_Islander_percent", "Some_other_race_population", "Some_other_race_percent")
+                  "Native_Hawaiian_and_Other_Pacific_Islander_percent", "Some_other_race_population", "Some_other_race_percent", "Zip_Code")
   #df[] <- lapply(df, function(x) type.convert(as.character(x))) # turns number values into characters
   return(df)
 }
