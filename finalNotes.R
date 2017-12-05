@@ -60,3 +60,28 @@ list <- c(98101,
           98194,
           98195,
           98199)
+
+install.packages('zipcode')
+library(zipcode)
+data(zipcode)
+zipcode
+library(dplyr)
+mutate(zip = numeric(zip))
+
+
+#install.packages("rgdal")
+#install.packages("sp")
+#install.packages("leaflet")
+# MAPPING THE CENSUS DATA WITH GGPLOT
+library(rgdal)    # for readOGR and others
+library(sp)       # for spatial objects
+library(leaflet)  # for interactive maps (NOT leafletR here)
+library(dplyr)    # for working with data frames
+library(ggplot2)  # for plotting
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-122.336, lat=47.609, popup="98101") %>% 
+  addMarkers(lng=-122.321, lat=47.634, popup="98102") 
+m  # Print the map
+
