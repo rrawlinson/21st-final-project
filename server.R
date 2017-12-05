@@ -10,9 +10,20 @@
 
 
 
-my.server <- function(input, output) {}
+my.server <- function(input, output) {
+  output$plot <- renderPlot({
+    dist <- input$dist
+    n <- input$n
+    
+    mydata12 <- get.data.for.year(input$year)
+    
+    plot <- ggplot(mydata12) +
+            geom_bar(mapping = aes(x = region, y = White_population, fill = region), stat = "identity") 
+    return(plot)
+
+  })
+}
 
 shinyServer(my.server)
 
-ggplot(mydata12) +
-  geom_bar(mapping = aes(x = region, y = White_population, fill = region), stat = "identity")
+
