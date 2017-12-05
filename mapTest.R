@@ -1,47 +1,83 @@
 # test out plotting map
 
-library(zipcode)
-library(tidyverse)
-library(maps)
-library(viridis)
-library(ggthemes)
+# devtools::install_github("tidyverse/ggplot2")
+# library(ggplot2)
+# library(zipcode)
+# library(tidyverse)
+# library(maps)
+# library(viridis)
+# library(ggthemes)
 # devtools::install_github("hrbrmstr/albersusa")
-library(albersusa)#installed via github
+# library(albersusa)#installed via github
 #data
-source("test.R")
+source("apiData.R")
 
-fm<-Export <- read_csv("~/Downloads/Export (1).csv")#the file we just downloaded
-data(zipcode)
-fm$zip<- clean.zipcodes(fm$zip)
-#size by zip
-fm.zip<-aggregate(data.frame(count=fm$FMID),list(zip=fm$zip,county=fm$County),length)
-fm<- merge(fm.zip, zipcode, by='zip')
+fm <- get.data.for.year("2015")  # Export <- read_csv("~/Downloads/Export (1).csv")#the file we just downloaded
+# data(zipcode)
+# fm$zip <- clean.zipcodes(fm$zip)
+# # size by zip
+# # fm.zip<-aggregate(data.frame(count=fm$FMID),list(zip=fm$zip,county=fm$County),length)
+# fm <- merge(fm, zipcode, by='zip')
 
-#######################
+# library(ggplot2)
+# library(choroplethr)
+# library(choroplethrZip)
+# 
+# 
+# #?zip.regions
+data(zip.regions)
+# 
+# 
+# #?df_pop_zip
+# data(df_pop_zip)
+# 
+# #?zip_choropleth
+# zip_choropleth(df_pop_zip,
+#                state_zoom = "new york",
+#                title      = "2012 New York State ZCTA Population Estimates",
+#                legend     = "Population") + coord_map()
 
-us<-map_data('state')
+# install.packages("devtools")
+# library(devtools)
+# # install_github('arilamstein/choroplethrZip@v1.3.0')
+# library(choroplethrZip)
+# 
+# data(df_pop_zip)
+# 
+# # ec = east coast
+# 
+zipcode.list <- c("98101", "98102", "98103", "98104", "98105", "98106", "98107", "98108", "98109", 
+                  "98112", "98115", "98116", "98117", "98118", "98119",
+                  "98121", "98122", "98125", "98126",
+                  "98133", "98134", "98136",
+                  "98144", "98146",
+                  "98154",
+                  "98164", 
+                  "98174", "98177", "98178", 
+                  
+                  "98195", "98199"
+)
+# 98111, 98113, 98114, 
+# 98124, 98127, 98129
+# "98131", "98132", "98139", 
+# "98141",  "98145", 
+# "98161","98165",
+# "98170", "98175", 
+# "98181", "98185",
+# "98190", "98191", 
 
-ggplot(fm,aes(longitude,latitude)) +
-  geom_polygon(data=us,aes(x=long,y=lat,group=group),color='gray',fill=NA,alpha=.35)+
-  geom_point(aes(color = count),size=.15,alpha=.25) +
-  xlim(-125,-65)+ylim(20,50)
+# manhattan_les = c("10002", "10003", "10009", "10021", "10028", "10044", "10128")
+# manhattan_ues = c()
 
-#######################
+data(df_zip_demographics)
+?df_zip_demographics
+colnames(df_zip_demographics)
 
-fm.counties<-aggregate(fm$count,by=list(fm$county,fm$state),sum)
-names(fm.counties)[1:2]<-c('county','state')
-cty_sf <- counties_sf("aeqd")
-cty_sf$county<-as.character(cty_sf$name)
-cty_sf$state<-as.character(cty_sf$iso_3166_2)
-data.fm<-left_join(cty_sf,fm.counties,by=c('state','county'))
-data.fm$x<-log(data.fm$x)
-data.fm$x[is.na(data.fm$x)]<-0
 
-#######################
+print(zip_choropleth(df_pop_zip,
+               msa_zoom = "Seattle-Tacoma-Bellevue, WA",
+               title    = "2012 NY-Newark-Jersey City MSA\nZCTA Population Estimates",
+               legend   = "Population"))
 
-data.fm %>%
-  ggplot(aes(fill = x, color = x)) + 
-  geom_sf() + 
-  scale_fill_viridis(option = "B",direction=-1) + 
-  scale_color_viridis(option = "B",direction=-1) +
-  theme_map(base_size=11)
+
+
