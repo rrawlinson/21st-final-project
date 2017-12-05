@@ -11,9 +11,8 @@
 
 
 my.server <- function(input, output) {
+  
   output$plot <- renderPlot({
-    dist <- input$dist
-    n <- input$n
     
     mydata12 <- get.data.for.year(input$year)
     
