@@ -49,10 +49,10 @@ sidebarLayout(
    ),
   
   mainPanel(
-    plotOutput('plot'),
-     tabsetPanel(tabPanel("Bar Graph", plotOutput("plot")))
-            #tabPanel(title = "Map", value = "plot"), plotOutput("plot"))
-               #tabPanel( title = "Graph", value = "graph") #plotlyOutput("tempplot"))
+    tabsetPanel(tabPanel("Bar Graph", plotOutput("plot"))
+                #tabPanel("Map", )
+                )
+            
   )
 )
 )
