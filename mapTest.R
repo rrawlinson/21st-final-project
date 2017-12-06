@@ -21,15 +21,15 @@ fm <- get.data.for.year("2015")  # Export <- read_csv("~/Downloads/Export (1).cs
 
 # library(ggplot2)
 # library(choroplethr)
-# library(choroplethrZip)
+library(choroplethrZip)
 # 
 # 
-# #?zip.regions
+# ?zip.regions
 data(zip.regions)
 # 
 # 
-# #?df_pop_zip
-# data(df_pop_zip)
+?df_pop_zip
+data(df_pop_zip)
 # 
 # #?zip_choropleth
 # zip_choropleth(df_pop_zip,

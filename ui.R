@@ -5,6 +5,7 @@
 # R ui interface for shiny app
 # Generates html webpage with map plot and interactive labels
 
+source("apiData.R")
 my.ui <- fluidPage(
 
 titlePanel("Diversity in Seattle", windowTitle = "Diversity in Seattle"),
@@ -23,10 +24,39 @@ p("This was an interactive data visualization was made from the US Census Data o
 
   p(),
 
-  p("The code is available on ", tags$a(href = "https://github.com/rrawlinson/21st-final-project", "GitHub"), ".")
-
+  p("The code is available on ", tags$a(href = "https://github.com/rrawlinson/21st-final-project", "GitHub"), "."),
+  
+sidebarLayout(   
+  sidebarPanel( 
+    radioButtons("choices",
+                  label = "choose:",
+                  choiceNames = list("population", "percent"),
+                  choiceValues = list("population" , "percent")
+    ),
+    selectInput("select", 
+                  label = "Select race:",
+                  choices = list("White", "Black or African American",
+                                "American Indian and Alaska Native",
+                                "Asian", "Native Hawaiian and Other Pacific Islander", 
+                                "Some other race"
+                  )
+    ),
+    selectInput("year", 
+                label = "Year:",
+                choices = list("2012", "2013", "2014", "2015")
+                )
+  
+   ),
+  
+  mainPanel(
+    tabsetPanel(tabPanel("Bar Graph", plotOutput("plot"))
+                #tabPanel("Map", )
+                )
+            
+  )
 )
-
+)
+ 
 
 
 shinyUI(my.ui)

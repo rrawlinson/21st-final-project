@@ -1,14 +1,9 @@
-# Test out getting and editing data frame
+# Info 201b final project
+# Project: Gentri-Track
+# Group: 21st Ave
 
-library("dplyr")
-# library("httr")
-library("jsonlite")
+# Lists of things for shiny server
 
-source("key.R")
-
-# seattle zip codes
-# some of these don't have data for this table so we can
-# remove those zip codes
 zipcode.list <- c(98101, 98102, 98103, 98104, 98105, 98106, 98107, 98108, 98109, 
                   98112, 98115, 98116, 98117, 98118, 98119,
                   98121, 98122, 98125, 98126, 
@@ -44,6 +39,7 @@ ethnicity.list <- c(
   "DP05_0064PE"  # Some other race percent
 )
 
+# names for data frame
 new.names <- c(
   "Total_population",
   "Total_percent",
@@ -61,43 +57,3 @@ new.names <- c(
   "Some_other_race_percent",
   "zip.code"
 )
-
-zipcodes.param <- paste(zipcode.list, collapse = ",")
-ethnicity.param <- paste(ethnicity.list, collapse = ",")
-
-
-first.base.url <- "https://api.census.gov/data/"
-year <- "2015"
-second.base.url <- "/acs5/profile"
-query <- paste0(first.base.url, year, second.base.url, "?")
-key <- paste0("key=", census.key)
-data <- paste0("get=", ethnicity.param)
-area <- paste0("for=", "zip%20code%20tabulation%20area:", zipcodes.param)
-full.url <- paste0(query, data, "&", area, "&", key)
-
-# print(full.url)
-df <- as.data.frame(fromJSON(full.url))
-# print(is.data.frame(df))
-names(df) <- as.matrix(df[1, ])
-df <- df[-1, ]
-# df[] <- lapply(df, function(x) type.convert(as.character(x))) # turns number values into characters
-names(df) <- new.names
-
-library(choroplethrZip)
-
-# data(zip.regions)
-
-race <- "White_"
-data.type <- "population"
-
-map.data <- df %>%  select(zip.code, eval(paste0(race, data.type)))
-names(map.data) <- c("region", "value")
-# map.data <- map.data %>% transform(value = as.numeric(value))
-map.data$region <- as.character(as.factor(map.data$region))
-map.data$value <- as.numeric(as.character(map.data$value))# lapply(map.data$value, function(x) as.numeric(as.character(x)))
-map.data <- map.data %>% arrange(value)
-
-print(zip_choropleth(map.data,
-                     zip_zoom = zipcode.list,
-                     title    = "TEst Map",
-                     legend   = "black ppl"))
