@@ -28,17 +28,17 @@ p("This was an interactive data visualization was made from the US Census Data o
   
 sidebarLayout(   
   sidebarPanel( 
-    radioButtons("choices",
+    radioButtons("datatype",
                   label = "choose:",
                   choiceNames = list("population", "percent"),
                   choiceValues = list("population" , "percent")
     ),
-    selectInput("select", 
+    selectInput("race", 
                   label = "Select race:",
-                  choices = list("White", "Black or African American",
-                                "American Indian and Alaska Native",
-                                "Asian", "Native Hawaiian and Other Pacific Islander", 
-                                "Some other race"
+                  choices = list("White" = "White_", "Black or African American" = "Black_or_African_American_",
+                                "American Indian and Alaska Native" = "American_Indian_and_Alaska_Native_",
+                                "Asian" = "Asian_", "Native Hawaiian and Other Pacific Islander" = "Native_Hawaiian_and_Other_Pacific_Islander_", 
+                                "Some other race" = "Some_other_race_")
                   )
     ),
     selectInput("year", 
