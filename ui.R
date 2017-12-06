@@ -10,7 +10,7 @@ my.ui <- fluidPage(
 
 titlePanel("Diversity in Seattle", windowTitle = "Diversity in Seattle"),
 
-p("This was an interactive data visualization was made from the US Census Data on", 
+  p("This was an interactive data visualization was made from the US Census Data on", 
 
     tags$a(href = "https://www.census.gov/newsroom/releases/archives/2010_census/cb11-cn170.html", "Race Distribution in the United States"),
 
@@ -28,14 +28,14 @@ p("This was an interactive data visualization was made from the US Census Data o
   
 sidebarLayout(   
   sidebarPanel( 
-    radioButtons("datatype",
+    radioButtons("data.type",
                   label = "choose:",
                   choiceNames = list("population", "percent"),
                   choiceValues = list("population" , "percent")
     ),
     selectInput("race", 
                   label = "Select race:",
-                  choices = list("White" = "White_", "Black or African American" = "Black_or_African_American_",
+                  choices = list("Total" = "Total_", "White" = "White_", "Black or African American" = "Black_or_African_American_",
                                 "American Indian and Alaska Native" = "American_Indian_and_Alaska_Native_",
                                 "Asian" = "Asian_", "Native Hawaiian and Other Pacific Islander" = "Native_Hawaiian_and_Other_Pacific_Islander_", 
                                 "Some other race" = "Some_other_race_")
@@ -49,12 +49,11 @@ sidebarLayout(
    ),
   
   mainPanel(
-    tabsetPanel(tabPanel("Bar Graph", plotOutput("plot"))
-                #tabPanel("Map", )
+    tabsetPanel(tabPanel("Map", plotOutput("map"))
+                # tabPanel("Bar Graph", plotOutput("plot"))
                 )
             
   )
-)
 )
  
 
