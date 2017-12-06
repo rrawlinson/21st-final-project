@@ -17,6 +17,9 @@ Technical Aspects:
   - ggplot2
   - choroplethr
   - shiny
+  - ggmap
+  - shinythemes
+  - jsonlite
 - Files:
   - server.R
   - ui.R
