@@ -8,7 +8,7 @@ Questions Answered:
 - What race is the majority in certain areas?
 - Show the shift/migration patterns over time
 
-Hosted on shinyapps.io here: [Diversity in Seattle]("https://dtsullivan.shinyapps.io/diversity-in-seattle/")
+Hosted on shinyapps.io here: [Diversity in Seattle](https://dtsullivan.shinyapps.io/diversity-in-seattle/)
 
 Technical Aspects:
 - R Language
