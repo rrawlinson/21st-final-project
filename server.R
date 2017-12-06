@@ -5,6 +5,12 @@
 # R server for shiny app
 # Creates data table of demographic information and locaiton
 
+# how to install choroplethrZip
+# install.packages("devtools")
+# library(devtools)
+# install_github('arilamstein/choroplethrZip@v1.3.0')
+# library(choroplethrZip)
+
 source("apiData.R")
 library(choroplethrZip)
 library("stringr")
