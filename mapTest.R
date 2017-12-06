@@ -39,7 +39,7 @@ data(df_pop_zip)
 
 # install.packages("devtools")
 # library(devtools)
-# # install_github('arilamstein/choroplethrZip@v1.3.0')
+# install_github('arilamstein/choroplethrZip@v1.3.0')
 # library(choroplethrZip)
 # 
 # data(df_pop_zip)
