@@ -1,7 +1,6 @@
-# 21st-final-project
-## Diversity in Seattle by Daniel Sullivan, Autumn Derr, Ruby Rawlinson, and AJ Schramm
+# Diversity in Seattle
+## By Daniel Sullivan, Autumn Derr, Ruby Rawlinson, and A.J. Schramm
 
-Description:
 Using ggplot and choroplethr packages, we created a map of Seattle zip codes.  With this map, we pulled specific race information from the US Census according to each zip code. The color of the zip code region corresponds to the amount of people of the selected race living in that area. The darker the color, the greater the concentration.
 
 Questions Answered:
