@@ -1,0 +1,13 @@
+name: diversity-in-seattle
+title: Diversity-in-Seattle
+username:
+account: dtsullivan
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 245028
+bundleId: 1118451
+url: https://dtsullivan.shinyapps.io/diversity-in-seattle/
+when: 1512550917.7014
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rapp.history|mapTest.R|test.R
