@@ -38,7 +38,7 @@ sidebarLayout(
                   choices = list("White", "Black or African American",
                                 "American Indian and Alaska Native",
                                 "Asian", "Native Hawaiian and Other Pacific Islander", 
-                                "Other"
+                                "Some other race"
                   )
     ),
     selectInput("year", 
